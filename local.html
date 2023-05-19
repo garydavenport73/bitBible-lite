@@ -23,24 +23,6 @@
 			<button id="decrease-font">-</button>
 			<button id="increase-font">+</button>
         </nav>
-        <!--
-        <nav>
-            <nav class="initial-close">
-				
-                <button id="courier-button">C</button>
-                <button id="sans-button">S</button>
-                <button id="times-button">T</button>
-                <button id="decrease-font">-</button>
-                <button id="increase-font">+</button>
-                <button>
-                    <input type="checkbox" id="show-all-checkbox">
-                    <label id="label-for-show-all-checkbox" for="show-all-checkbox">▦</label>
-                </button>
-            </nav>
-            <button id="initial-second-menu" class="nested-menu">&equiv;</button>
-            <button class="nested-menu">&equiv;</button>
-        </nav>
-        -->
     </nav>
     <div id="main-container">
 		<main id="loading">
@@ -49,21 +31,8 @@
         <main id="reading">
             <h3>Reading Plan</h3>
             <nav>
-                <!--<button id="load-reading-progress">Load Progress&#128194;</button>
-                <button id="save-reading-progress">Save&#128193;</button>-->
                 <button id="switch-reading-plans">Switch Plans</button>
             </nav>
-            <!-- <nav>
-                Currently, toggle-reading-dates controls showing of dates in table, nested-menu controls open and close of each other 
-                <button id="toggle-reading-dates">&equiv; Dates</button>
-                <nav id="reading-menu" class="initial-close">
-                    <button id="last-check-to-today-button">Today is Last Checked Box</button>
-                    <button id="reset-dates">Reset to Defaults</button>
-                    <div>
-                        <button onclick="_shiftDates();">Shift By:</button><input type="number" id="shift-by-integer" value="0" step="1">
-                    </div>
-                </nav>
-            </nav>-->
             <h2 id="reading-plan-name"></h2>
             <table id="reading-plan-table"></table>
         </main>
@@ -71,19 +40,12 @@
             <h3 id='bible-name'>Bible</h3>
             <nav>
                 <button class="narrow" id="bible-chapter-previous">&lt;</button>
-                <!--<select id="bible-select" disabled></select>-->
                 <select id="bible-book-select"></select>
                 <select id="bible-chapter-select"></select>
                 <button class="narrow" id="bible-chapter-next">&gt;</button>
-                <!--<button class="no-margin" id="refresh-bible-chapter">&#10227;</button>-->
                 <button id="see-commentary-button" class="no-margin">↱💬</button>
             </nav>
             <nav>
-				<!--
-                <button id="stop-audio">◼</button>
-                <button id="play-audio">▶</button>
-                <button id="pause-audio"><b>||</b></button>
-                &nbsp;&nbsp;-->
                 <button>
                     <input type="checkbox" id="show-red-letters">
                     <label id="label-for-show-red-letters" for="show-red-letters">Red Letters</label>
@@ -94,10 +56,6 @@
         </main>
         <main id="dictionary">
             <h3>Dictionary</h3>
-            <!-- <nav> <input type="search" id="dictionary-input" list="bible-words">
-                <button id="dictionary-word-load" class="no-margin">🔎</button>
-                <datalist id="bible-words"></datalist>
-            </nav> -->
             <div id="autocomplete-div">
                 <input type="text" id="dictionary-input" placeholder="type words here...">
                 <button id="dictionary-word-load" class="no-margin">🔎</button>
@@ -114,7 +72,6 @@
                 <select id="commentary-book-select"></select>
                 <select id="commentary-chapter-select"></select>
                 <button class="narrow" id="commentary-chapter-next">&gt;</button>
-                <!--<button class="no-margin" id="refresh-commentary-chapter">&#10227;</button>-->
             </nav>
             <div id="commentary-contents"></div>
         </main>
@@ -175,10 +132,6 @@
                         <button>T</button>
                         <button>-</button>
                         <button>+</button>
-                        <!--<button>
-                            <input type="checkbox">
-                            <label>▦</label>
-                        </button>-->
                         <button>≡</button>
                     </nav>
                     <ul>
@@ -197,15 +150,10 @@
                 <h3 class="nested-menu">Reading Plan Menu</h3>
                 <div class="initial-close">
                     <nav>
-                        <!--<button>Load Progress📂</button>
-                        <button>Save 📁</button>
                         <button>🔄Dates</button>-->
                         <button>Switch</button>
                     </nav>
                     <ul>
-                        <!--<li>Load Progress📂 - Loads reading progress and custom settings.</li>
-                        <li>Save 📁 - Saves reading progress and custome settings.</li>
-                        <li>🔄Dates - Will toggle the yearly calendar with the reading plan.</li>-->
                         <li>Switch - Allows you to switch reading plans from Chronological to Straight through the Bible
                             or Old Testament/New Testament Selectitons.</li>
                     </ul>
@@ -236,9 +184,6 @@
                         <li><input type="checkbox"><label>Red Letters</label> - Verses that contain Jesus's words shown in red.</li>
                         <li>↱💬 - Will select and open the commentary corresponding to the current Bible book and
                             chapter.</li>
-                        <!--<li>◼ - Will stop audio from playing and reset to the beginning of the chapter.</li>
-                        <li>▶ - Will play or resume audio if paused.</li>
-                        <li><b>||</b> - Will pause audio at current position in the chapter.</li>-->
                     </ul>
                 </div>
             </div>
@@ -361,8 +306,7 @@
             </div>
         </main>
     </div>
-    <!-- Load Bible, Dictionary, and Commentary, and other Constant Arrays-->
-    <!-- constants.js contains OSISBOOKS, OSISTOFULLNAME, HEADINGS, PARAGRAPHLOCATIONS -->
+    <footer>bitBible 2022</footer>
     <script>
         let commentaryBook = "JFB";
         let bibleVersion = "BSB";
@@ -380,12 +324,8 @@
 	<script src='./js/OTNTREADINGPLAN.js'></script>	
 	<script src='./js/STRAIGHTREADINGPLAN.js'></script>	
 	<script src='./js/CHRONOLOGICALNT260.js'></script>	
-	<script>
-	let nestedBible=BSB;
-	</script>				
+	<script> let nestedBible=BSB; </script>	
 	<script src='javascriptLocal.js'></script>
 	<script src='javascriptCommon.js'></script>
-	<script>//addEventListenersToNestedMenues();</script>
 	</body>
-
 </html>

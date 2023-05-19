@@ -81,22 +81,6 @@ h1 {
     padding: 8px;
 }
 
-/* .osis {
-    background-color: lightcoral;
-}
-
-.definition-entry {
-    background-color: orange;
-}
-
-.definition-location {
-    background-color: yellow;
-}
-
-.definition-relatives {
-    background-color: pink;
-} */
-
 .word,
 .osis,
 .definition-entry,
@@ -135,16 +119,6 @@ a {
     padding: 0;
     position: relative;
     overflow: hidden;
-}
-
-#ascii-map {
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 4px;
-    margin: 0;
-    padding: 0;
-    display: inline-block;
-    line-height: 1;
-    background-color: snow;
 }
 
 .bullseye,
@@ -204,7 +178,7 @@ main {
     overflow-y: auto;
 }
 
-@media only screen and (max-width: 1000px) {
+
 
     h1,
     body {
@@ -217,16 +191,21 @@ main {
         height: unset;
         overflow-y: unset;
     }
-}
+
 
 sub {
     font-size: 0.9rem;
 }
 
-#show-all-checkbox {
-    padding: 0;
-    margin: 0;
-    vertical-align: middle;
+footer {
+	position: fixed; 
+	bottom: 0; 
+	left: 50%; 
+	transform: translate(-50%, 0%);
+	background-color:rgba(255,250,250,0.8);
+	padding:4px; 
+	border-radius:5px;
+	border:1px solid lightgrey;
 }
 
 /* INITIALIZATION */
@@ -265,18 +244,6 @@ main input {
     border: 1px solid gray;
 }
 
-#courier-button {
-    font-family: 'Courier New', Courier, monospace;
-}
-
-#sans-button {
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-#times-button {
-    font-family: 'Times New Roman', Times, serif;
-}
-
 .narrow {
     min-width: 2rem;
     margin: 0;
@@ -294,10 +261,6 @@ main input {
 
 .redletter {
     color: rgb(200, 0, 0);
-}
-
-li.day-of-year {
-    color: darkolivegreen;
 }
 
 .no-margin{
@@ -318,12 +281,6 @@ li.day-of-year {
 #bible-select, #commentary-select{
     display: none;
 }
-
-/* TEMPORARY UNTIL PAUSE ISSUE FIXED */
-#pause-audio{
-    display: none;
-}
-
 
 #dictionary-word-load{
     margin:0;
@@ -349,12 +306,12 @@ width:200px;
     background-color:lightgrey;
 }
 .day-heading{
-font-size: 0.7rem;
-padding:0;
-margin:0;
+	font-size: 0.7rem;
+	padding: 0;
+	margin: 0;
 }
 
-#increase-font,#decrease-font{
-min-width:0px;
-width: 1.7rem;
+#increase-font, #decrease-font{
+	min-width: 0px;
+	width: 1.7rem;
 }
