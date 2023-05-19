@@ -326,12 +326,20 @@ li.day-of-year {
 
 
 #dictionary-word-load{
-    display: none;
+    margin:0;
+    padding:0;
+    font-size:1rem;
+    min-width:0;
 }
+
 #search-result-list{
     border: 1px solid grey;
     position: absolute;
     width: 320px;
+}
+#search-result-list, #dictionary-input{
+box-sizing:border-box;
+width:200px;
 }
 #search-result-list li:nth-child(odd){
     background-color: snow;
@@ -344,4 +352,9 @@ li.day-of-year {
 font-size: 0.7rem;
 padding:0;
 margin:0;
+}
+
+#increase-font,#decrease-font{
+min-width:0px;
+width: 1.7rem;
 }

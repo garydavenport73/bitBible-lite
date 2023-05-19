@@ -300,7 +300,7 @@ function switchReadingPlans() {
         else {
             loadReadingTable("Chronological", CHRONOLOGICALREADINGPLAN);
         }
-        document.getElementById("reading-menu").style.display = "none";
+        //document.getElementById("reading-menu").style.display = "none";
 
         // if (document.getElementById("reading-plan-name").innerHTML === "Old Testament/New Testament") {
         //     loadReadingTable("Straight Through", STRAIGHTREADINGPLAN);
@@ -315,6 +315,12 @@ function switchReadingPlans() {
     //}
 }
 
+
+//function displayReadingPlanName() {
+//    document.getElementById("reading-plan-name").innerHTML = readingPlanName;
+//}
+
+/////////////////GENERAL DATE RELTAED//////////////////
 function getDateString(year, dayInteger) {
     const d = new Date(year, 0, dayInteger);
     return (
@@ -325,12 +331,6 @@ function getDateString(year, dayInteger) {
         ("0" + d.getDate().toString()).slice(-2)
     );
 }
-
-//function displayReadingPlanName() {
-//    document.getElementById("reading-plan-name").innerHTML = readingPlanName;
-//}
-
-
 
 function getTodaysDate() {
     let now = new Date();
@@ -364,7 +364,9 @@ function subtract2Dates(dateString1, dateString2) {
     return (dayDifference);
 }
 
+////////////////////////////////////////////
 
+/*
 function toggleReadingDates() {
     let readingDates = document.getElementsByClassName("day-of-year");
     //console.log(readingDates);
@@ -401,7 +403,8 @@ function toggleReadingDates() {
         // document.getElementById("switch-reading-plans").style.display="none"
     }
 }
-
+* */
+/*
 function showReadingDates() {
     let today = getTodaysDate();
     let readingDates = document.getElementsByClassName("day-of-year");
@@ -421,10 +424,10 @@ function hideReadingDates() {
     }
     showDates = false;
 }
-
+*/
 /////////////////// RELATED TO LOADING SAVING READING SCHEDULE /////////////////////
 
-function saveReadingProgress() {
+/*function saveReadingProgress() {
     let saveData = {};
     let lastCheckedIndex = -1;
     let lastCheckedDate = "";
@@ -564,7 +567,9 @@ function loadReadingProgress() {
     });
     inputTypeIsFile.click();
 }
+*/
 
+/*
 function refreshReadingDates() {
     if (readingPlanData["reading-plan-name"] === "Old Testament/New Testament") {
         loadReadingTable("Old Testament/New Testament", OTNTREADINGPLAN);
@@ -579,22 +584,18 @@ function refreshReadingDates() {
         loadReadingTable("Chronological NT 260 Days", CHRONOLOGICALNT260);
     }
 
-
-
     else {
         loadReadingTable("Chronological", CHRONOLOGICALREADINGPLAN);
     }
-
 }
+*/
 
 function loadReadingTable(title, readingPlanObject) {
     readingPlanTable.innerHTML = makeReadingTable(readingPlanObject);
     document.getElementById("reading-plan-name").innerHTML = title;
-    //****************changed */
-    showDates = false;
-    //********************************** */
     addEventListenersToReferences();
 }
+
 
 
 //////////////////////////////////////////////////////////////
@@ -607,7 +608,7 @@ function loadReadingTable(title, readingPlanObject) {
 ///////////////////////////////////////////////////////////
 /////////////AUDIO///////////////////////////////////////
 ////////////////////////////////////////////////////////
-
+/*
 function stop() {
     warnNoSynth();
     uttersArr=[];
@@ -712,6 +713,7 @@ function warnNoSynth() {
         alert("Speech synthesis is not available in this browser.");
     }
 }
+*/
 ////////////////////////////////////////////////
 ///////////////////////////////////////////////////
 /////////////////////////////////////////////////
@@ -722,6 +724,7 @@ function warnNoSynth() {
 
 "use strict";
 //computes the size of the map, and keeps reducing the size until under the specified width
+/*
 function setSizeOfAsciiMap(pixelWidth) {
     
     return;
@@ -751,6 +754,7 @@ function setSizeOfAsciiMap(pixelWidth) {
         }
     }
 }
+* */
 function getYFromLatitude(latitude) {
     //y=mx+b;
     //yLocation=mLat*latitude+bLat
@@ -761,18 +765,10 @@ function getYFromLatitude(latitude) {
     //let bottomPixel = 745;
 
 
-
-
-
-
-
-
     ////////////CHANGE HERE TO IMAGE //////////////
 
     //->    let bottomPixel = asciiMap.offsetHeight;
     let bottomPixel = base64Map.offsetHeight;
-
-
 
     console.log("height " + bottomPixel);
     let topPixel = 0;
@@ -914,7 +910,7 @@ function addBackgroundLocations(evt) {
     }
 }
 
-function openGoogleMap() {
+/*function openGoogleMap() {
     // let location = document.getElementById("map-info").innerText.split(": ")[1];
     // console.log(location);
     // if ((location !== undefined) && (location.indexOf("undefined") === -1)) {
@@ -924,6 +920,7 @@ function openGoogleMap() {
     // }
     console.log("Set to doing nothing");
 }
+*/
 
 function locationOffMap(latitude, longitude) {
     let xLocation = getXLocationFromLongitude(longitude);
@@ -951,9 +948,9 @@ function clearAllLocations() {
 ///////////////////////////////////////////
 //  General functions
 /////////////////////////////////////////////////
-function askConfirm() {
-    return "Close?";
-}
+//function askConfirm() {
+//    return "Close?";
+//}
 
 function makeFavicon(letter, color, backgroundColor) {
     //put this in head of html document
@@ -1046,7 +1043,7 @@ function changeFont(theElement) {
     // let h3s=document.getElementsByTagName('h3');
 
     let id = theElement.id;
-    if (id === "sans-button") {
+    /*if (id === "sans-button") {
         document.getElementsByTagName('html')[0].style.fontFamily = "Arial, Helvetica, sans-serif";
         for (let button of buttons) {
             button.style.fontFamily = "Arial, Helvetica, sans-serif";
@@ -1114,7 +1111,9 @@ function changeFont(theElement) {
         }
         //document.getElementById("shift-by-integer").style.borderRadius = "0px";
     }
-    else if (id === "increase-font") {
+    else 
+    */
+    if (id === "increase-font") {
         let pageFontSize = document.getElementsByTagName('*')[0].style.fontSize;
         if (pageFontSize === "") {
             pageFontSize = "1rem";
@@ -1141,6 +1140,7 @@ function changeFont(theElement) {
 }
 //expands all content, button navigation not needed
 
+/*
 function processShowAllCheckBox() {
     let thisCheckBox = document.getElementById("show-all-checkbox");
     if (thisCheckBox.checked) {
@@ -1148,7 +1148,7 @@ function processShowAllCheckBox() {
         for (let main of mains) {
             main.style.display = "block";
         }
-        setSizeOfAsciiMap(320);
+        //setSizeOfAsciiMap(320);
         disableMainNavButtons(true);
     }
     else {
@@ -1156,21 +1156,22 @@ function processShowAllCheckBox() {
         disableMainNavButtons(false);
     }
 }
+*/
 
 function toggleRedLetters() {
     console.log("toggle red letters");
     if (document.getElementById("show-red-letters").checked === true) {
         useRedLetters = true;
         console.log("should use");
-        showBibleChapter();
+        showBibleChapterUsingDoubleSelect();
     }
     else {
         useRedLetters = false;
         console.log("don't use");
-        showBibleChapter();
+        showBibleChapterUsingDoubleSelect();
     }
 }
-function disableMainNavButtons(disable = true) {
+/*function disableMainNavButtons(disable = true) {
     readingButton.disabled = disable;
     bibleButton.disabled = disable;
     dictionaryButton.disabled = disable;
@@ -1178,6 +1179,7 @@ function disableMainNavButtons(disable = true) {
     mapButton.disabled = disable;
     helpButton.disabled = disable;
 }
+*/
 //shows the main section requested
 function showMain(id) {
     //if (document.getElementById("show-all-checkbox").checked === true) {
@@ -1228,7 +1230,7 @@ function processPeopleClick(evt) {
 }
 function processLocationClick(evt) {
     showMain('map');
-    setSizeOfAsciiMap(320);
+    //setSizeOfAsciiMap(320);
     console.log(evt.target.innerHTML);
     let str = evt.target.parentElement.id.split("-refs-")[0];
     let latitude = evt.target.innerHTML.split(",")[0];
@@ -1266,7 +1268,6 @@ function processWordClick(evt) {
     showMain('dictionary');
     // dictionaryInput.value = evt.target.innerHTML;
     showDictionaryEntry(evt);
-    document.getElementById('search-result-list').innerHTML="";
 }
 function processOsisRefClick(evt) {
     showMain('bible');
@@ -1406,7 +1407,7 @@ let dictionaryButton = document.getElementById("dictionary-button");
 let commentaryButton = document.getElementById("commentary-button");
 let mapButton = document.getElementById("map-button");
 let helpButton = document.getElementById("help-button");
-let showDates = false;
+//let showDates = false;
 //let playingAudio = false;
 //let playButton = document.getElementById("play-audio");
 //playButton.addEventListener("click", play);
@@ -1449,18 +1450,18 @@ commentaryChapterSelect.addEventListener("input", showCommentaryChapterUsingDoub
 //document.getElementById("refresh-bible-chapter").addEventListener("click", showBibleChapter);
 //document.getElementById("refresh-bible-chapter").addEventListener("click", showBibleChapterUsingDoubleSelect);
 seeCommentaryButton.addEventListener("click", processSeeCommentaryBtn);
-//dictionaryWordLoadButton.addEventListener("click", showDictionaryEntry);
+dictionaryWordLoadButton.addEventListener("click", showDictionaryEntry);
 //commentarySelect.addEventListener("input", showCommentaryChapterUsingDoubleSelect);
 //document.getElementById("refresh-commentary-chapter").addEventListener("click", showCommentaryChapterUsingDoubleSelect);
 document.getElementById("reading-button").addEventListener("click", () => { showMain("reading"); });
 document.getElementById("bible-button").addEventListener("click", () => { showMain("bible"); });
 document.getElementById("dictionary-button").addEventListener("click", () => { showMain("dictionary"); });
 document.getElementById("commentary-button").addEventListener("click", () => { showMain("commentary"); });
-document.getElementById("map-button").addEventListener("click", () => { showMain("map"); setSizeOfAsciiMap(320); });
+document.getElementById("map-button").addEventListener("click", () => { showMain("map"); /*setSizeOfAsciiMap(320);*/ });
 document.getElementById("help-button").addEventListener("click", () => { showMain("help"); });
-document.getElementById("courier-button").addEventListener("click", (evt) => { changeFont(evt.target); });
-document.getElementById("sans-button").addEventListener("click", (evt) => { changeFont(evt.target); });
-document.getElementById("times-button").addEventListener("click", (evt) => { changeFont(evt.target); });
+//document.getElementById("courier-button").addEventListener("click", (evt) => { changeFont(evt.target); });
+//document.getElementById("sans-button").addEventListener("click", (evt) => { changeFont(evt.target); });
+//document.getElementById("times-button").addEventListener("click", (evt) => { changeFont(evt.target); });
 document.getElementById("decrease-font").addEventListener("click", (evt) => { changeFont(evt.target); });
 document.getElementById("increase-font").addEventListener("click", (evt) => { changeFont(evt.target); });
 //document.getElementById("show-all-checkbox").addEventListener("change", processShowAllCheckBox);
@@ -1469,7 +1470,7 @@ document.getElementById("increase-font").addEventListener("click", (evt) => { ch
 //document.getElementById("toggle-reading-dates").addEventListener("click", toggleReadingDates);
 document.getElementById("switch-reading-plans").addEventListener("click", switchReadingPlans);
 document.getElementById("btn-clear-all-locations").addEventListener("click", clearAllLocations);
-document.getElementById("btn-open-google-map").addEventListener("click", openGoogleMap);
+//document.getElementById("btn-open-google-map").addEventListener("click", openGoogleMap);
 document.getElementById("bible-chapter-previous").addEventListener("click", backOneChapterBible);
 document.getElementById("bible-chapter-next").addEventListener("click", forwardOneChapterBible);
 document.getElementById("commentary-chapter-previous").addEventListener("click", backOneChapterCommentary);
@@ -1481,7 +1482,7 @@ document.getElementById("show-red-letters").addEventListener("change", toggleRed
 for (let button of buttonSelectMaps) {
     button.addEventListener("click", addBackgroundLocations);
 }
-window.onbeforeunload = askConfirm;
+//window.onbeforeunload = askConfirm;
 //Generate the keys to the JFB Commentary
 generateJFBKeys();
 //Build the commentary select options from the keys.
@@ -1681,7 +1682,7 @@ function buildUnorderedList(arr) {
 //bibleSelect.value = "Gen.1";
 bibleBookSelect.value = "Gen";
 bibleChapterSelect.value = "1";
-showBibleChapter();
+showBibleChapterUsingDoubleSelect();
 //dictionaryInput.value = "Jerusalem";
 //dictionaryWordLoadButton.click();
 //showDictionaryEntrySimple("hello");///---consider making a simple dictionary opener word only

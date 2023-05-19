@@ -1,17 +1,15 @@
 "use strict";
 
-function showBibleChapter() {
-showBibleChapterUsingDoubleSelect();
-}
+//function showBibleChapter() {
+//showBibleChapterUsingDoubleSelect();
+//}
 
 function showCommentaryChapter() {
 	showCommentaryChapterUsingDoubleSelect();
-	
-
 }
 
 function showDictionaryEntry(evt) {
-	
+	document.getElementById('search-result-list').innerHTML="";
 
     let baseName = "";
     if (evt.target.id === "dictionary-word-load") {
