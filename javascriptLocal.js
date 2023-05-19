@@ -71,7 +71,8 @@ function showDictionaryEntry(evt) {
     }
 
     else if (evt.target.parentElement.id === "bible-contents") {//event is coming from bible chapter verse
-        senderRefArrayStr = bibleSelect.value;
+		senderRefArrayStr = bibleBookSelect.value+"."+bibleChapterSelect.value;
+        //senderRefArrayStr = bibleSelect.value;
 
     } else if (evt.target.parentElement.id === "commentary-contents") {//event coming from commentary
         senderRefArrayStr = commentarySelect.value;
@@ -218,3 +219,9 @@ function generateDictionaryWords() {//**will change if not local */
         dictionaryWords.push(eastons[i]["word"]);
     }
 }
+
+function displayBibleName(name) {
+    document.getElementById("bible-name").innerHTML = name;
+}
+
+displayBibleName("Bible");

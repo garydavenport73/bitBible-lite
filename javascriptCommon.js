@@ -95,13 +95,13 @@ function makeReadingTable(readingPlan) {
     return readingTable;
 }
 
-function _shiftDates() {
-    let shiftInteger = parseInt(document.getElementById("shift-by-integer").value);
-    if (!isNaN(shiftInteger)) {
-        shiftDates(shiftInteger);
-    }
-}
-
+//function _shiftDates() {
+//   let shiftInteger = parseInt(document.getElementById("shift-by-integer").value);
+//    if (!isNaN(shiftInteger)) {
+//        shiftDates(shiftInteger);
+//    }
+//}
+/*
 function resetDates() {
     let now = new Date();
     let today = getTodaysDate();
@@ -127,7 +127,8 @@ function resetDates() {
     }
 
 }
-
+*/
+/*
 function setLastCheckedToSomeDate(someDate) {
     let lastIndex = 1;
     for (let i = 366; i > 0; i--) {
@@ -156,7 +157,8 @@ function setLastCheckedToSomeDate(someDate) {
     //_getDateOfLastChecked(lastIndex);
     //return lastIndex;
 }
-
+*/
+/*
 function setLastCheckedToToday() {
     let isChecked = false;
     for (let i = 0; i < 366; i++) {
@@ -173,7 +175,8 @@ function setLastCheckedToToday() {
     }
 
 }
-
+*/
+/*
 function _getDateOfLastChecked(lastChecked) {
     if (lastChecked !== -1) {
         let parentElement = document.getElementById("reading-ul-" + lastChecked.toString());
@@ -190,32 +193,10 @@ function _getDateOfLastChecked(lastChecked) {
         return -1;
     }
 }
+*/
 
-function subtract2Dates(dateString1, dateString2) {
 
-    let year1 = parseInt(dateString1.split("-")[0]);
-    let month1 = parseInt(dateString1.split("-")[1]) - 1;
-    let date1 = parseInt(dateString1.split("-")[2]);
-
-    let year2 = parseInt(dateString2.split("-")[0]);
-    let month2 = parseInt(dateString2.split("-")[1]) - 1;
-    let date2 = parseInt(dateString2.split("-")[2]);
-
-    let dateObject1 = new Date(year1, month1, date1);
-    let dateObject2 = new Date(year2, month2, date2);
-
-    let oneDay = 1 * 60 * 60 * 24 * 1000;
-
-    let timeDifference = dateObject1.getTime() - dateObject2.getTime();
-
-    let dayDifference = parseInt(timeDifference / oneDay);
-    console.log(typeof (dayDifference));
-
-    console.log(dayDifference);
-    return (dayDifference);
-
-}
-
+/*
 function shiftDates(shiftInteger) {
     let today = getTodaysDate();
     //console.log("attempting to shift dates by ", shiftInteger);
@@ -274,7 +255,7 @@ function shiftDates(shiftInteger) {
     // console.log(newDateString);
 
 }
-
+*/
 function switchReadingPlans() {
 
     //CHRON -> OT/NT -> ST -> NTCHRON
@@ -321,7 +302,6 @@ function switchReadingPlans() {
         }
         document.getElementById("reading-menu").style.display = "none";
 
-
         // if (document.getElementById("reading-plan-name").innerHTML === "Old Testament/New Testament") {
         //     loadReadingTable("Straight Through", STRAIGHTREADINGPLAN);
         // }
@@ -333,10 +313,6 @@ function switchReadingPlans() {
         // }
         // document.getElementById("reading-menu").style.display="none";
     //}
-
-
-
-
 }
 
 function getDateString(year, dayInteger) {
@@ -350,13 +326,11 @@ function getDateString(year, dayInteger) {
     );
 }
 
-function displayReadingPlanName() {
-    document.getElementById("reading-plan-name").innerHTML = readingPlanName;
-}
+//function displayReadingPlanName() {
+//    document.getElementById("reading-plan-name").innerHTML = readingPlanName;
+//}
 
-function displayBibleName() {
-    document.getElementById("bible-name").innerHTML = bibleName + "<span id='audio'>&#128266;</span>";
-}
+
 
 function getTodaysDate() {
     let now = new Date();
@@ -364,6 +338,30 @@ function getTodaysDate() {
     let month = ("0" + (now.getMonth() + 1)).slice(-2);
     let today = now.getFullYear() + "-" + month + "-" + day;
     return today;
+}
+
+function subtract2Dates(dateString1, dateString2) {
+
+    let year1 = parseInt(dateString1.split("-")[0]);
+    let month1 = parseInt(dateString1.split("-")[1]) - 1;
+    let date1 = parseInt(dateString1.split("-")[2]);
+
+    let year2 = parseInt(dateString2.split("-")[0]);
+    let month2 = parseInt(dateString2.split("-")[1]) - 1;
+    let date2 = parseInt(dateString2.split("-")[2]);
+
+    let dateObject1 = new Date(year1, month1, date1);
+    let dateObject2 = new Date(year2, month2, date2);
+
+    let oneDay = 1 * 60 * 60 * 24 * 1000;
+
+    let timeDifference = dateObject1.getTime() - dateObject2.getTime();
+
+    let dayDifference = parseInt(timeDifference / oneDay);
+    console.log(typeof (dayDifference));
+
+    console.log(dayDifference);
+    return (dayDifference);
 }
 
 
@@ -1388,7 +1386,7 @@ function forwardOneChapterCommentary() {
 /////////////////////////////////////////////////////////
 //Name important global elements
 let readingPlanTable = document.getElementById("reading-plan-table");
-let bibleSelect = document.getElementById("bible-select");
+//let bibleSelect = document.getElementById("bible-select");
 let bibleBookSelect = document.getElementById("bible-book-select");
 let bibleChapterSelect = document.getElementById("bible-chapter-select");
 let bibleContents = document.getElementById("bible-contents");
@@ -1434,7 +1432,7 @@ let useRedLetters = false;
 //
 //////////////////////////////////////////////////
 //Add event listeners to the Bible Selectn process
-bibleSelect.addEventListener("input", showBibleChapter);
+//bibleSelect.addEventListener("input", showBibleChapter);
 
 bibleBookSelect.addEventListener("input", populateBibleChapterSelect);
 
@@ -1680,7 +1678,7 @@ function buildUnorderedList(arr) {
 
 //----------------------------------------------
 //load initial settings
-bibleSelect.value = "Gen.1";
+//bibleSelect.value = "Gen.1";
 bibleBookSelect.value = "Gen";
 bibleChapterSelect.value = "1";
 showBibleChapter();
