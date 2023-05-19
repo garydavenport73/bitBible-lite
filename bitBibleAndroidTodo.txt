@@ -1,0 +1,39 @@
+to do on bitBible App->
+X change from ASCII map to image  DONE
+X might as well change the google map launch mechanism
+x remove event listener from btn-launch-google-maps
+
+
+to do bitBible Android
+general remove keep from navigation
+add bitBible android
+
+General
+make bitBible launch website
+put license in help area
+
+Reading plan
+x remove number checkboxes and put days
+x remove load/save progress
+x remove dates
+
+Bible
+x remove play/stop
+x remove refresh
+
+Commentary
+remove refresh
+fix navigation for chapter 0
+
+
+Maps
+Make image in map with base64
+
+Hamburger
+allow only C,S,T,-,+
+
+Help
+remake main navigation buttons
+
+
+
