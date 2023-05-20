@@ -2,7 +2,7 @@ const fs=require('fs');
 console.log(process.argv[2]);
 console.log(process.argv[3]);
 let contents=fs.readFileSync(process.argv[2],"utf8");
-let saveFilename=process.argv[2].replace(".html","")+"withCSSAndScripts.html";
+let saveFilename=process.argv[2].replace(".html","")+"WithCSSAndScripts.html";
 if (process.argv[3]!==undefined){
     saveFilename=process.argv[3];
 }

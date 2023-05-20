@@ -144,14 +144,10 @@ function showDictionaryEntry(evt) {
     }
 }
 function generateJFBKeys() {
-    for (let i = 0;
-        i < OSISBOOKS.length;
-        i++) {
-            let book = OSISBOOKS[i];
-        for (let j = 0;
-            j < 200;
-            j++) {
-                let key = book + "." + j.toString();
+    for (let i = 0; i < OSISBOOKS.length; i++) {
+        let book = OSISBOOKS[i];
+        for (let j = 0; j < 200; j++) {
+            let key = book + "." + j.toString();
             if (JFB.hasOwnProperty(key)) {
                 jfbKeys.push(key);
             }
@@ -159,24 +155,18 @@ function generateJFBKeys() {
     }
 }
 function buildOsisBibleKeys() {
-    for (let i = 0;
-        i < OSISBOOKS.length;
-        i++) {
-            let book = OSISBOOKS[i];
-        for (let j = 0;
-            j < 200;
-            j++) {
-                if (nestedBible[book].hasOwnProperty(j.toString())) {
-                    osis.push(book + "." + j.toString());
-                }
+    for (let i = 0; i < OSISBOOKS.length; i++) {
+        let book = OSISBOOKS[i];
+        for (let j = 0; j < 200; j++) {
+            if (nestedBible[book].hasOwnProperty(j.toString())) {
+                osis.push(book + "." + j.toString());
+            }
         }
     }
 }
 function generateDictionaryWords() {
-    for (let i = 0;
-        i < eastons.length;
-        i++) {
-            dictionaryWords.push(eastons[i]["word"]);
+    for (let i = 0; i < eastons.length; i++) {
+        dictionaryWords.push(eastons[i]["word"]);
     }
 }
 function displayBibleName(name) {

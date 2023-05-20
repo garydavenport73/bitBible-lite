@@ -421,50 +421,54 @@ function tagRefsAndWords(contents, osisStartTag, osisEndTag, wordStartTag, wordE
 
 }
 function backOneChapterBible() {
-    if (bibleChapterSelect.value === "") {
+    if ((bibleBookSelect.value === "") ||(bibleChapterSelect.value==="")) {
         return;
     }
     let osisValue = bibleBookSelect.value + "." + bibleChapterSelect.value;
     let currentIndex = osis.indexOf(osisValue);
     if (currentIndex > 0) {
         bibleBookSelect.value = osis[currentIndex - 1].split(".")[0];
+        populateBibleChapterSelect();
         bibleChapterSelect.value = osis[currentIndex - 1].split(".")[1];
         showBibleChapterUsingDoubleSelect();
     }
 }
 function forwardOneChapterBible() {
-    if (bibleChapterSelect.value === "") {
+    if ((bibleBookSelect.value === "") ||(bibleChapterSelect.value==="")) {
         return;
     }
     let osisValue = bibleBookSelect.value + "." + bibleChapterSelect.value;
     let currentIndex = osis.indexOf(osisValue);
     if (currentIndex < osis.length - 1) {
         bibleBookSelect.value = osis[currentIndex + 1].split(".")[0];
+        populateBibleChapterSelect();
         bibleChapterSelect.value = osis[currentIndex + 1].split(".")[1];
         showBibleChapterUsingDoubleSelect();
     }
 }
 function backOneChapterCommentary() {
-    if (commentaryChapterSelect.value === "") {
+    if ((commentaryBookSelect.value === "") ||(commentaryChapterSelect.value==="")) {
         return;
     }
-    let osisValue = commentaryBookSelect.value + "." + commentaryChapterSelect.value;
-    let currentIndex = osis.indexOf(osisValue);
+    let jfbKeysValue = commentaryBookSelect.value + "." + commentaryChapterSelect.value;
+    let currentIndex = jfbKeys.indexOf(jfbKeysValue);
     if (currentIndex > 0) {
-        commentaryBookSelect.value = osis[currentIndex - 1].split(".")[0];
-        commentaryChapterSelect.value = osis[currentIndex - 1].split(".")[1];
+        commentaryBookSelect.value = jfbKeys[currentIndex - 1].split(".")[0];
+        populateCommentaryChapterSelect();
+        commentaryChapterSelect.value = jfbKeys[currentIndex - 1].split(".")[1];
         showCommentaryChapterUsingDoubleSelect();
     }
 }
 function forwardOneChapterCommentary() {
-    if (commentaryChapterSelect.value === "") {
+    if ((commentaryBookSelect.value === "") ||(commentaryChapterSelect.value==="")) {
         return;
     }
-    let osisValue = commentaryBookSelect.value + "." + commentaryChapterSelect.value;
-    let currentIndex = osis.indexOf(osisValue);
-    if (currentIndex < osis.length - 1) {
-        commentaryBookSelect.value = osis[currentIndex + 1].split(".")[0];
-        commentaryChapterSelect.value = osis[currentIndex + 1].split(".")[1];
+    let jfbKeysValue = commentaryBookSelect.value + "." + commentaryChapterSelect.value;
+    let currentIndex = jfbKeys.indexOf(jfbKeysValue);
+    if (currentIndex < jfbKeys.length - 1) {
+        commentaryBookSelect.value = jfbKeys[currentIndex + 1].split(".")[0];
+        populateCommentaryChapterSelect();
+        commentaryChapterSelect.value = jfbKeys[currentIndex + 1].split(".")[1];
         showCommentaryChapterUsingDoubleSelect();
     }
 }
