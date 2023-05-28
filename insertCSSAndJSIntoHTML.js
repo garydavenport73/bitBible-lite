@@ -1,4 +1,14 @@
 const fs=require('fs');
+let help="Use insertCSSAndJSIntoHTML.js [inputfile.html] [outputfile.html]\nNote: outputfile.html is optional\n\nExamples:\nnode insertCSSAndJSIntoHTML.js index.html newFile.html -> creates a new combined file named newFile.html \nnode insertCSSAndJSIntoHTML.js index.html              -> creates a new combined file named indexWithCSSAndScripts.html";
+
+if (process.argv[2]===undefined){
+    console.log("Syntax Error:");
+}
+
+if ((process.argv[2]===undefined)||(process.argv[2].toLowerCase().trim()==="-h")||process.argv[2].toLowerCase().trim()==="-help"){
+    console.log(help);
+    return 1;
+}
 console.log(process.argv[2]);
 console.log(process.argv[3]);
 let contents=fs.readFileSync(process.argv[2],"utf8");
