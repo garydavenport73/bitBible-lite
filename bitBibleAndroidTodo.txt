@@ -11,6 +11,7 @@ x add bitBible android
 General
 x make bitBible launch website
 x put license in help area
+x make no rotate
 
 Reading plan
 x remove number checkboxes and put days

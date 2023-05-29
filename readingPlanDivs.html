@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .flex-reading-plan {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .flex-reading-plan>div {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .flex-reading-plan>div {
+            display: flex;
+            flex-direction: column;
+        }
+    </style>
+</head>
+
+<body>
+    <main id="reading">
+        <div id="flex-reading-plan">
+            <div>
+                <b>Day 1</b>
+                <span><input class="chapter-checkbox" type="checkbox" id="Gen.1-checkbox"><label
+                        for="Gen.1-checkbox">Gen.1</label></span>
+                <span><input class="chapter-checkbox" type="checkbox" id="Gen.2-checkbox"><label
+                        for="Gen.2-checkbox">Gen.1</label></span>
+                <span><input class="chapter-checkbox" type="checkbox" id="Gen.3-checkbox"><label
+                        for="Gen.3-checkbox">Gen.1</label></span>
+            </div>
+            <div>
+                <b>Day 2</b>
+                <span><input type="checkbox"><label>Gen.1</label></span>
+                <span><input type="checkbox"><label>Gen.1</label></span>
+                <span><input type="checkbox"><label>Gen.1</label></span>
+            </div>
+            <div>
+                <b>Day 2</b>
+                <span><input type="checkbox"><label>Gen.1</label></span>
+                <span><input type="checkbox"><label>Gen.1</label></span>
+                <span><input type="checkbox"><label>Gen.1</label></span>
+            </div>
+            <div>
+                <b>Day 2</b>
+                <span><input type="checkbox"><label>Gen.1</label></span>
+                <span><input type="checkbox"><label>Gen.1</label></span>
+                <span><input type="checkbox"><label>Gen.1</label></span>
+            </div>
+            <div>
+                <b>Day 2</b>
+                <span><input type="checkbox"><label>Gen.1</label></span>
+                <span><input type="checkbox"><label>Gen.1</label></span>
+                <span><input type="checkbox"><label>Gen.1</label></span>
+            </div>
+            <div>
+                <b>Day 2</b>
+                <span><input type="checkbox"><label>Gen.1</label></span>
+                <span><input type="checkbox"><label>Gen.1</label></span>
+                <span><input type="checkbox"><label>Gen.1</label></span>
+            </div>
+            <div>
+                <b>Day 2</b>
+                <span><input type="checkbox"><label>Gen.1</label></span>
+                <span><input type="checkbox"><label>Gen.1</label></span>
+                <span><input type="checkbox"><label>Gen.1</label></span>
+            </div>
+            <div>
+                <b>Day 2</b>
+                <span><input type="checkbox"><label>Gen.1</label></span>
+                <span><input type="checkbox"><label>Gen.1</label></span>
+                <span><input type="checkbox"><label>Gen.1</label></span>
+            </div>
+            <div>
+                <b>Day 2</b>
+                <span><input type="checkbox"><label>Gen.1</label></span>
+                <span><input type="checkbox"><label>Gen.1</label></span>
+                <span><input type="checkbox"><label>Gen.1</label></span>
+            </div>
+            <div>
+                <b>Day 2</b>
+                <span><input type="checkbox"><label>Gen.1</label></span>
+                <span><input type="checkbox"><label>Gen.1</label></span>
+                <span><input type="checkbox"><label>Gen.1</label></span>
+            </div>
+        </div>
+    </main>
+</body>
+<script src='./js/BSB.js'></script>
+<script src='./js/OSISBOOKS.js'></script>
+<script>
+    let osis = [];
+    let nestedBible = BSB;
+    let readChapters = {};
+    function buildOsisBibleKeys() {
+        for (let i = 0; i < OSISBOOKS.length; i++) {
+            let book = OSISBOOKS[i];
+            for (let j = 0; j < 200; j++) {
+                if (nestedBible[book].hasOwnProperty(j.toString())) {
+                    osis.push(book + "." + j.toString());
+                }
+            }
+        }
+    }
+
+    function createReadChapters() {
+        readChapters = {};
+        for (let i = 0; i < osis.length; i++) {
+            readChapters[osis[i]] = false;
+        }
+        console.log(readChapters);
+    }
+
+
+    buildOsisBibleKeys();
+    createReadChapters();
+</script>
+
+</html>
