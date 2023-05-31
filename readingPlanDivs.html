@@ -7,20 +7,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        .flex-reading-plan {
+        #flex-reading-plan {
             display: flex;
             flex-wrap: wrap;
         }
 
-        .flex-reading-plan>div {
+        #flex-reading-plan div {
             display: flex;
             flex-direction: column;
         }
 
-        .flex-reading-plan>div {
-            display: flex;
-            flex-direction: column;
-        }
     </style>
 </head>
 
@@ -32,9 +28,9 @@
                 <span><input class="chapter-checkbox" type="checkbox" id="Gen.1-checkbox"><label
                         for="Gen.1-checkbox">Gen.1</label></span>
                 <span><input class="chapter-checkbox" type="checkbox" id="Gen.2-checkbox"><label
-                        for="Gen.2-checkbox">Gen.1</label></span>
+                        for="Gen.2-checkbox">Gen.2</label></span>
                 <span><input class="chapter-checkbox" type="checkbox" id="Gen.3-checkbox"><label
-                        for="Gen.3-checkbox">Gen.1</label></span>
+                        for="Gen.3-checkbox">Gen.3</label></span>
             </div>
             <div>
                 <b>Day 2</b>
@@ -95,6 +91,59 @@
 </body>
 <script src='./js/BSB.js'></script>
 <script src='./js/OSISBOOKS.js'></script>
+<script src="./js/CHRONOLOGICALNT260.js"></script>
+<script src="./js/CHRONOLOGICALREADINGPLAN.js"></script>
+<script>
+    let readingPlan=CHRONOLOGICALNT260;
+    readingPlan=CHRONOLOGICALREADINGPLAN;
+    console.log(CHRONOLOGICALNT260);
+</script>
+<script>
+    function buildFlexReadingPlanTable(){
+        let str="";
+        console.log("readingPlan");
+        for (let i=0;i<366;i++){
+            let day="Day "+ i.toString();
+            if (readingPlan.hasOwnProperty(day)){
+                console.log(day, readingPlan[day]);
+                let dayReadingList=readingPlan[day].trim().split(",");
+                for (let i=0;i<dayReadingList.length;i++){//remove whitspace
+                    dayReadingList[i]=dayReadingList[i].trim();
+                }
+                str+="<div>\n";
+                str+="<b>"+day+"</b>";
+                for (let i=0;i<dayReadingList.length;i++){//remove whitspace
+                    let thisChapter=dayReadingList[i];
+                    str+="<span><input class='chapter-checkbox' type='checkbox' id='"+thisChapter+"-checkbox'><label for='"+thisChapter+"-checkbox'>"+thisChapter+"</label></span>"
+                }
+                str+="</div>";
+
+            //     <div>
+            //     <b>Day 1</b>
+            //     <span><input class="chapter-checkbox" type="checkbox" id="Gen.1-checkbox"><label for="Gen.1-checkbox">Gen.1</label></span>
+            //     <span><input class="chapter-checkbox" type="checkbox" id="Gen.2-checkbox"><label
+            //             for="Gen.2-checkbox">Gen.2</label></span>
+            //     <span><input class="chapter-checkbox" type="checkbox" id="Gen.3-checkbox"><label
+            //             for="Gen.3-checkbox">Gen.3</label></span>
+            // </div>
+
+
+
+
+
+            }
+            else(console.log(i,"no day"));
+
+
+
+
+
+
+        }
+        document.getElementById("flex-reading-plan").innerHTML=str;
+    }
+    buildFlexReadingPlanTable();
+</script>
 <script>
     let osis = [];
     let nestedBible = BSB;
@@ -118,9 +167,25 @@
         console.log(readChapters);
     }
 
+    function updateReadChapters(evt){
+        console.log(evt.target.id);
+        let box=document.getElementById(evt.target.id);
+        let bookChap=evt.target.id.replace("-checkbox","");
+        readChapters[bookChap]=box["checked"];
+        console.log(readChapters[bookChap]);
+    }
+
+    function addEventListenersToChapterCheckboxes(){
+        let boxes=document.getElementsByClassName("chapter-checkbox");
+        for (let i=0;i<boxes.length;i++){
+            boxes[i].addEventListener("input", (evt)=>updateReadChapters(evt));
+        }
+    }
+
 
     buildOsisBibleKeys();
     createReadChapters();
+    addEventListenersToChapterCheckboxes();
 </script>
 
 </html>
