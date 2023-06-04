@@ -32,6 +32,8 @@
             <h3>Reading Plan</h3>
             <nav>
                 <button id="switch-reading-plans">Switch Plans</button>
+                <button id="download-reading-progress">Download Progress</button>
+                <button id="upload-reading-progress">Upload Progress</button>
             </nav>
             <h2 id="reading-plan-name"></h2>
             <table id="reading-plan-table"></table>
@@ -45,12 +47,6 @@
                 <select id="bible-chapter-select"></select>
                 <button class="narrow" id="bible-chapter-next">&gt;</button>
                 <button id="see-commentary-button" class="no-margin">↱💬</button>
-            </nav>
-            <nav>
-                <button>
-                    <input type="checkbox" id="show-red-letters">
-                    <label id="label-for-show-red-letters" for="show-red-letters">Red Letters</label>
-                </button>
             </nav>
             <div id="bible-contents"></div>
         </main>
@@ -325,7 +321,6 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY
     <script src='./js/BSB.js'></script>
     <script src='./js/eastons.js'></script>
     <script src='./js/JFB.js'></script>
-    <script src='./js/REDLETTERREFERENCES.js'></script>
     <script src='./js/HEADINGS.js'></script>
     <script src='./js/OSISTOFULLNAME.js'></script>
     <script src='./js/OSISBOOKS.js'></script>
@@ -338,6 +333,88 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY
     <script> let nestedBible = BSB; </script>
     <script src='javascriptLocal.js'></script>
     <script src='javascriptCommon.js'></script>
+
+    <script>    function createReadChapters() {
+            readChapters = {};
+            for (let i = 0; i < osis.length; i++) {
+                readChapters[osis[i]] = false;
+            }
+            console.log(readChapters);
+        }
+
+        function updateReadChapters(evt) {
+            console.log(evt.target.id);
+            let box = document.getElementById(evt.target.id);
+            let bookChap = evt.target.id.replace("-checkbox", "");
+            readChapters[bookChap] = box["checked"];
+            console.log(readChapters[bookChap]);
+        }
+
+        function addEventListenersToChapterCheckboxes() {
+            let boxes = document.getElementsByClassName("chapter-checkbox");
+            for (let i = 0; i < boxes.length; i++) {
+                boxes[i].addEventListener("input", (evt) => updateReadChapters(evt));
+            }
+        }
+        function buildFlexReadingPlanTable(readingPlan){
+        let str="";
+        console.log("readingPlan");
+        for (let i=0;i<366;i++){
+            let day="Day "+ i.toString();
+            if (readingPlan.hasOwnProperty(day)){
+                console.log(day, readingPlan[day]);
+                let dayReadingList=readingPlan[day].trim().split(",");
+                for (let i=0;i<dayReadingList.length;i++){//remove whitspace
+                    dayReadingList[i]=dayReadingList[i].trim();
+                }
+                str+="<div>\n";
+                str+="<b>"+day+"</b>";
+                for (let i=0;i<dayReadingList.length;i++){//remove whitspace
+                    let thisChapter=dayReadingList[i];
+                    //str+="<span><input class='chapter-checkbox' type='checkbox' id='"+thisChapter+"-checkbox'><label for='"+thisChapter+"-checkbox' class='osis'>"+thisChapter+"</label></span>";
+                    str+="<span><input class='chapter-checkbox' type='checkbox' id='"+thisChapter+"-checkbox'><label class='osis'>"+thisChapter+"</label></span>"
+                }
+                str+="</div>";
+
+            //     <div>
+            //     <b>Day 1</b>
+            //     <span><input class="chapter-checkbox" type="checkbox" id="Gen.1-checkbox"><label for="Gen.1-checkbox">Gen.1</label></span>
+            //     <span><input class="chapter-checkbox" type="checkbox" id="Gen.2-checkbox"><label
+            //             for="Gen.2-checkbox">Gen.2</label></span>
+            //     <span><input class="chapter-checkbox" type="checkbox" id="Gen.3-checkbox"><label
+            //             for="Gen.3-checkbox">Gen.3</label></span>
+            // </div>
+            }
+            else(console.log(i,"no day"));
+        }
+        document.getElementById("flex-reading-plan").innerHTML=str;
+    }
+    function fillChapterCheckBoxValues(){
+        console.log("fillChapterCheckBoxValues() called");
+        let checkboxes=document.getElementsByClassName("chapter-checkbox");
+        //console.log(checkboxes);
+        for (let i=0;i<checkboxes.length;i++){
+            let osisID=checkboxes[i]["id"].replace("-checkbox","");
+
+            console.log(i,osisID);
+            if (readChapters[osisID]===true){
+                console.log(osisID + "was checked");
+                checkboxes[i]["checked"]=true;
+            }
+            else{
+                checkboxes[i]["checked"]=false;
+            }
+        }
+    }
+
+        loadReadingTable("Chronological", CHRONOLOGICALREADINGPLAN);
+        createReadChapters();
+        addEventListenersToChapterCheckboxes();
+        fillChapterCheckBoxValues();
+        
+        </script>
+
+
 </body>
 
 </html>

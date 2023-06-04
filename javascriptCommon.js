@@ -36,6 +36,8 @@ function switchReadingPlans() {
     else {
         loadReadingTable("Chronological", CHRONOLOGICALREADINGPLAN);
     }
+    addEventListenersToChapterCheckboxes();
+    fillChapterCheckBoxValues();
 }
 function getDateString(year, dayInteger) {
     const d = new Date(year, 0, dayInteger);
@@ -69,8 +71,8 @@ function subtract2Dates(dateString1, dateString2) {
     console.log(dayDifference);
     return (dayDifference);
 }
-function loadReadingTable(title, readingPlanObject) {
-    readingPlanTable.innerHTML = makeReadingTable(readingPlanObject);
+function loadReadingTable(title,readingPlanObject) {
+    buildFlexReadingPlanTable(readingPlanObject);
     document.getElementById("reading-plan-name").innerHTML = title;
     addEventListenersToReferences();
 }
@@ -286,19 +288,6 @@ function changeFont(theElement) {
         pageFontSize = numberFontSize.toString() + "rem";
         document.getElementsByTagName('*')[0].style.fontSize = pageFontSize;
 
-    }
-}
-function toggleRedLetters() {
-    console.log("toggle red letters");
-    if (document.getElementById("show-red-letters").checked === true) {
-        useRedLetters = true;
-        console.log("should use");
-        showBibleChapterUsingDoubleSelect();
-    }
-    else {
-        useRedLetters = false;
-        console.log("don't use");
-        showBibleChapterUsingDoubleSelect();
     }
 }
 function showMain(id) {
@@ -533,7 +522,8 @@ document.getElementById("bible-chapter-previous").addEventListener("click", back
 document.getElementById("bible-chapter-next").addEventListener("click", forwardOneChapterBible);
 document.getElementById("commentary-chapter-previous").addEventListener("click", backOneChapterCommentary);
 document.getElementById("commentary-chapter-next").addEventListener("click", forwardOneChapterCommentary);
-document.getElementById("show-red-letters").addEventListener("change", toggleRedLetters);
+document.getElementById("download-reading-progress").addEventListener("click",downloadReadingProgress);
+document.getElementById("upload-reading-progress").addEventListener("click",uploadReadingProgress);
 for (let button of buttonSelectMaps) {
     button.addEventListener("click", addBackgroundLocations);
 }
@@ -683,6 +673,51 @@ function buildUnorderedList(arr) {
     return str;
 
 }
+
+function downloadReadingProgress(){
+    console.log("downloadReadingProgress called");
+    saveStringToTextFile(JSON.stringify(readChapters),"readingProgress",".json");
+}
+function uploadReadingProgress(){
+    console.log("uploadReadingProgress called");
+    let fileContents = "";
+    let inputTypeIsFile = document.createElement("input");
+    inputTypeIsFile.type = "file";
+    inputTypeIsFile.addEventListener("change", function () {
+        let fileInput = inputTypeIsFile.files[0];
+        let fileReader = new FileReader();
+        fileReader.onload = function (fileLoadedEvent) {
+            let savedData = JSON.parse(fileLoadedEvent.target.result);
+            //console.log(readingPlanData);
+            readChapters={};
+            readChapters=savedData;
+            fillChapterCheckBoxValues();
+        };
+        fileReader.readAsText(fileInput, "UTF-8");
+    });
+    inputTypeIsFile.click();
+}
+
+
+function saveStringToTextFile(
+    str1,
+    basename = "readingPlanProgress",
+    fileType = ".json"
+) {
+    let filename = basename + fileType;
+    let blobVersionOfText = new Blob([str1], {
+        type: "text/plain",
+    });
+    let urlToBlob = window.URL.createObjectURL(blobVersionOfText);
+    let downloadLink = document.createElement("a");
+    downloadLink.style.display = "none";
+    downloadLink.download = filename;
+    downloadLink.href = urlToBlob;
+    document.body.appendChild(downloadLink);
+    downloadLink.click();
+    downloadLink.parentElement.removeChild(downloadLink);
+}
+
 bibleBookSelect.value = "Gen";
 bibleChapterSelect.value = "1";
 showBibleChapterUsingDoubleSelect();
@@ -690,6 +725,5 @@ commentaryBookSelect.value = "Gen";
 commentaryChapterSelect.value = "1";
 showCommentaryChapterUsingDoubleSelect();
 showMain('bible');
-loadReadingTable("Chronological", CHRONOLOGICALREADINGPLAN);
 addEventListenersToNestedMenues();
 makeFavicon("B", "white", "blue");

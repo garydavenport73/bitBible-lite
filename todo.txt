@@ -35,5 +35,12 @@ x allow only C,S,T,-,+
 Help
 x remake main navigation buttons
 
+x Remove redletters
 
+x Redo readingplan into flow layout
 
+x add load/save
+
+Change selects to Regular names, not osis names
+
+go back and fix loading problems on regular bitbible

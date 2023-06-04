@@ -112,7 +112,7 @@ let OTNTREADINGPLAN ={
 	"Day 111": "Judg.19,Judg.20,Judg.21,Luke.16",
 	"Day 112": "Ruth.1,Ruth.2,Ruth.3,Ruth.4,Luke.17.1-19",
 	"Day 113": "1Sam.1,1Sam.2,1Sam.3,Luke.17.20-37",
-	"Day 114": "1Sam1Sam.4,1Sam.5,1Sam.6,Luke.18.1-23",
+	"Day 114": "1Sam.4,1Sam.5,1Sam.6,Luke.18.1-23",
 	"Day 115": "1Sam.7,1Sam.8,1Sam.9,Luke.18.24-43",
 	"Day 116": "1Sam.10,1Sam.11,1Sam.12,Luke.19.1-27",
 	"Day 117": "1Sam.13,1Sam.14,Luke.19.28-48",
