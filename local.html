@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    <h1><a href="https://www.garydavenport.com/bitbible" target="_blank">bitBible</a><sub>lite</sub></h1>
+    <h1><a href="https://www.webpagearea.com/bitbible" target="_blank">bitBible</a><sub>lite</sub></h1>
     <nav>
         <button id="reading-button">📅</button>
         <button id="bible-button">📖</button>
@@ -32,8 +32,9 @@
             <h3>Reading Plan</h3>
             <nav>
                 <button id="switch-reading-plans">Switch Plans</button>
-                <button id="download-reading-progress">Download Progress</button>
-                <button id="upload-reading-progress">Upload Progress</button>
+                <nav>
+                    <button id="download-reading-progress">Download Progress</button>
+                    <button id="upload-reading-progress">Upload Progress</button></nav>
             </nav>
             <h2 id="reading-plan-name"></h2>
             <table id="reading-plan-table"></table>
@@ -310,9 +311,12 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY
 </pre>
                 </div>
             </div>
+
         </main>
+        <span id="old-computer-icon">&#128421;</span>
     </div>
-    <footer><a href="https://www.garydavenport.com/bitbible" target="_blank">bitBible 2022</a></footer>
+
+    <footer><a href="https://www.webpagearea.com/bitbible" target="_blank">bitBible 2022</a></footer>
     <script>
         let commentaryBook = "JFB";
         let bibleVersion = "BSB";
@@ -356,65 +360,94 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY
                 boxes[i].addEventListener("input", (evt) => updateReadChapters(evt));
             }
         }
-        function buildFlexReadingPlanTable(readingPlan){
-        let str="";
-        console.log("readingPlan");
-        for (let i=0;i<366;i++){
-            let day="Day "+ i.toString();
-            if (readingPlan.hasOwnProperty(day)){
-                console.log(day, readingPlan[day]);
-                let dayReadingList=readingPlan[day].trim().split(",");
-                for (let i=0;i<dayReadingList.length;i++){//remove whitspace
-                    dayReadingList[i]=dayReadingList[i].trim();
-                }
-                str+="<div>\n";
-                str+="<b>"+day+"</b>";
-                for (let i=0;i<dayReadingList.length;i++){//remove whitspace
-                    let thisChapter=dayReadingList[i];
-                    //str+="<span><input class='chapter-checkbox' type='checkbox' id='"+thisChapter+"-checkbox'><label for='"+thisChapter+"-checkbox' class='osis'>"+thisChapter+"</label></span>";
-                    str+="<span><input class='chapter-checkbox' type='checkbox' id='"+thisChapter+"-checkbox'><label class='osis'>"+thisChapter+"</label></span>"
-                }
-                str+="</div>";
+        function buildFlexReadingPlanTable(readingPlan) {
+            let str = "";
+            console.log("readingPlan");
+            for (let i = 0; i < 366; i++) {
+                let day = "Day " + i.toString();
+                if (readingPlan.hasOwnProperty(day)) {
+                    console.log(day, readingPlan[day]);
+                    let dayReadingList = readingPlan[day].trim().split(",");
+                    for (let i = 0; i < dayReadingList.length; i++) {//remove whitspace
+                        dayReadingList[i] = dayReadingList[i].trim();
+                    }
+                    str += "<div>\n";
+                    str += "<b class='align-center'>" + day + "</b>";
+                    for (let i = 0; i < dayReadingList.length; i++) {//remove whitspace
+                        let thisChapter = dayReadingList[i];
+                        //str+="<span><input class='chapter-checkbox' type='checkbox' id='"+thisChapter+"-checkbox'><label for='"+thisChapter+"-checkbox' class='osis'>"+thisChapter+"</label></span>";
+                        str += "<span><input class='chapter-checkbox' type='checkbox' id='" + thisChapter + "-checkbox'><label class='osis'>" + thisChapter + "</label></span>"
+                    }
+                    str += "</div>";
 
-            //     <div>
-            //     <b>Day 1</b>
-            //     <span><input class="chapter-checkbox" type="checkbox" id="Gen.1-checkbox"><label for="Gen.1-checkbox">Gen.1</label></span>
-            //     <span><input class="chapter-checkbox" type="checkbox" id="Gen.2-checkbox"><label
-            //             for="Gen.2-checkbox">Gen.2</label></span>
-            //     <span><input class="chapter-checkbox" type="checkbox" id="Gen.3-checkbox"><label
-            //             for="Gen.3-checkbox">Gen.3</label></span>
-            // </div>
+                    //     <div>
+                    //     <b>Day 1</b>
+                    //     <span><input class="chapter-checkbox" type="checkbox" id="Gen.1-checkbox"><label for="Gen.1-checkbox">Gen.1</label></span>
+                    //     <span><input class="chapter-checkbox" type="checkbox" id="Gen.2-checkbox"><label
+                    //             for="Gen.2-checkbox">Gen.2</label></span>
+                    //     <span><input class="chapter-checkbox" type="checkbox" id="Gen.3-checkbox"><label
+                    //             for="Gen.3-checkbox">Gen.3</label></span>
+                    // </div>
+                }
+                else (console.log(i, "no day"));
             }
-            else(console.log(i,"no day"));
+            document.getElementById("flex-reading-plan").innerHTML = str;
         }
-        document.getElementById("flex-reading-plan").innerHTML=str;
-    }
-    function fillChapterCheckBoxValues(){
-        console.log("fillChapterCheckBoxValues() called");
-        let checkboxes=document.getElementsByClassName("chapter-checkbox");
-        //console.log(checkboxes);
-        for (let i=0;i<checkboxes.length;i++){
-            let osisID=checkboxes[i]["id"].replace("-checkbox","");
+        function fillChapterCheckBoxValues() {
+            console.log("fillChapterCheckBoxValues() called");
+            let checkboxes = document.getElementsByClassName("chapter-checkbox");
+            //console.log(checkboxes);
+            for (let i = 0; i < checkboxes.length; i++) {
+                let osisID = checkboxes[i]["id"].replace("-checkbox", "");
 
-            console.log(i,osisID);
-            if (readChapters[osisID]===true){
-                console.log(osisID + "was checked");
-                checkboxes[i]["checked"]=true;
-            }
-            else{
-                checkboxes[i]["checked"]=false;
+                console.log(i, osisID);
+                if ((readChapters[osisID]!==undefined)&&(readChapters[osisID] === true)) {
+                    console.log(osisID + "was checked");
+                    checkboxes[i]["checked"] = true;
+                }
+                else {
+                    checkboxes[i]["checked"] = false;
+                }
             }
         }
-    }
+
+        document.getElementById("old-computer-icon").addEventListener("click", toggleFont);
+        document.getElementsByTagName("html")[0].style.fontFamily = "Arial, Helvetica, sans-serif";
+        //document.getElementsByTagName("html")[0]["style"]["fontFamily"]="Arial, Helvetica, sans-serif";
+        function toggleFont() {
+            alert("Happy Easter 🥚 !")
+            let htmlElement = document.getElementsByTagName("html")[0];
+            let buttons = document.getElementsByTagName("button");
+            let selects = document.getElementsByTagName("select");
+            console.log(htmlElement.style.fontFamily);
+            if (htmlElement.style.fontFamily === "Arial, Helvetica, sans-serif") {
+                htmlElement.style.fontFamily = "'Courier New', Courier, monospace";
+                for (let i = 0; i < buttons.length; i++) {
+                    buttons[i].style.fontFamily="'Courier New', Courier, monospace";
+                }
+                for (let i=0;i<selects.length;i++){
+                    selects[i].style.fontFamily="'Courier New', Courier, monospace";
+                }
+            }
+            else {
+                htmlElement.style.fontFamily = "Arial, Helvetica, sans-serif";
+                for (let i = 0; i < buttons.length; i++) {
+                    buttons[i].style.fontFamily="Arial, Helvetica, sans-serif";
+                }
+                for (let i=0;i<selects.length;i++){
+                    selects[i].style.fontFamily="Arial, Helvetica, sans-serif";
+                }
+            }
+
+            //console.log(document.getElementsByTagName("html")[0].style.fontFamily);// = "Impact,Charcoal,sans-serif")
+
+        }
 
         loadReadingTable("Chronological", CHRONOLOGICALREADINGPLAN);
         createReadChapters();
         addEventListenersToChapterCheckboxes();
         fillChapterCheckBoxValues();
-        
-        </script>
-
-
+    </script>
 </body>
 
 </html>

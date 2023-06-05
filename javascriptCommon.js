@@ -373,6 +373,7 @@ function processSeeCommentaryBtn() {
         return;
     }
     commentaryBookSelect.value = book;
+    populateCommentaryChapterSelect();
     commentaryChapterSelect.value = chapter;
     showCommentaryChapterUsingDoubleSelect();
     showMain('commentary');
@@ -534,7 +535,7 @@ function buildBibleBookSelect() {
     for (let i = 0;
         i < OSISBOOKS.length;
         i++) {
-            str += "<option value='" + OSISBOOKS[i] + "'>" + OSISBOOKS[i] + "</option>";
+            str += "<option value='" + OSISBOOKS[i] + "'>" + OSISTOFULLNAME[OSISBOOKS[i]] + "</option>";
     }
     bibleBookSelect.innerHTML = str;
     bibleBookSelect.value = "Gen";
@@ -558,8 +559,8 @@ function populateBibleChapterSelect() {
     bibleChapterSelect.innerHTML = str;
     bibleChapterSelect.value = "";
     bibleContents.innerHTML = "Pick a chapter.";
-    showBibleChapterUsingDoubleSelect();
-
+    //showBibleChapterUsingDoubleSelect();
+    //???????????????????????????????????????? above needed???//
 }
 function populateCommentaryChapterSelect() {
     let book = commentaryBookSelect.value;

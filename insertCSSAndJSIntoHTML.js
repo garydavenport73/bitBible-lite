@@ -30,7 +30,7 @@ for (let i=0;i<lines.length;i++){
     }
     else if (squishedLine.indexOf("<scriptsrc=")!==-1){
         filename=squishedLine.replace("<scriptsrc=","").replace("></script>","").trim();
-        console.log("Attempting to insert "+filename +"into document.");
+        console.log("Attempting to insert "+filename +" into document.");
         let scriptContents=fs.readFileSync(filename,"utf8");
         newContents+="<script>\n"+scriptContents+"\n</script>\n";
     }
