@@ -34,7 +34,8 @@
                 <button id="switch-reading-plans">Switch Plans</button>
                 <nav>
                     <button id="download-reading-progress">Download Progress</button>
-                    <button id="upload-reading-progress">Upload Progress</button></nav>
+                    <button id="upload-reading-progress">Upload Progress</button>
+                </nav>
             </nav>
             <h2 id="reading-plan-name"></h2>
             <table id="reading-plan-table"></table>
@@ -338,7 +339,9 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY
     <script src='javascriptLocal.js'></script>
     <script src='javascriptCommon.js'></script>
 
-    <script>    function createReadChapters() {
+    <script>    
+    let readChapters={};
+    function createReadChapters() {
             readChapters = {};
             for (let i = 0; i < osis.length; i++) {
                 readChapters[osis[i]] = false;
@@ -361,8 +364,12 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY
             }
         }
         function buildFlexReadingPlanTable(readingPlan) {
+            document.getElementById("flex-reading-plan").innerHTML = "";
             let str = "";
             console.log("readingPlan");
+            
+            //let osisUsedKeys=JSON.parse(JSON.stringify(osis));
+            let osisUsedKeys=[];//keep a list of used chapters, do not repeat during build
             for (let i = 0; i < 366; i++) {
                 let day = "Day " + i.toString();
                 if (readingPlan.hasOwnProperty(day)) {
@@ -374,9 +381,20 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY
                     str += "<div>\n";
                     str += "<b class='align-center'>" + day + "</b>";
                     for (let i = 0; i < dayReadingList.length; i++) {//remove whitspace
-                        let thisChapter = dayReadingList[i];
+                        let thisChapterArray = dayReadingList[i].split(".");//just want book and chapter, omit verses
+                        let thisChapter=thisChapterArray[0]+"."+thisChapterArray[1];
+
+                        //want to eliminate the verses cut down to chapter
+
+                        if (osisUsedKeys.includes(thisChapter)===false){
+                            str += "<span><input class='chapter-checkbox' type='checkbox' id='" + thisChapter + "-checkbox'><label class='osis'>" + thisChapter + "</label></span>";
+                            osisUsedKeys.push(thisChapter);
+                        }
+                        else{
+                            str += "<span><input style='visibility:hidden;'type='checkbox'><label class='osis'>" + thisChapter + "</label></span>";
+                        }                        
                         //str+="<span><input class='chapter-checkbox' type='checkbox' id='"+thisChapter+"-checkbox'><label for='"+thisChapter+"-checkbox' class='osis'>"+thisChapter+"</label></span>";
-                        str += "<span><input class='chapter-checkbox' type='checkbox' id='" + thisChapter + "-checkbox'><label class='osis'>" + thisChapter + "</label></span>"
+                        
                     }
                     str += "</div>";
 
@@ -393,6 +411,8 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY
             }
             document.getElementById("flex-reading-plan").innerHTML = str;
         }
+
+
         function fillChapterCheckBoxValues() {
             console.log("fillChapterCheckBoxValues() called");
             let checkboxes = document.getElementsByClassName("chapter-checkbox");
