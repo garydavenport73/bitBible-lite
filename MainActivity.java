@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
                 Log.e(TAG, "Reflection fail", e);
             }
         }
-    webview.loadUrl("file:///android_asset/bitBible.html");
+    webview.loadUrl("file:///android_asset/bitBible-lite.html");
     }
 }
 

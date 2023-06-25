@@ -41,6 +41,6 @@ x Redo readingplan into flow layout
 
 x add load/save
 
-Change selects to Regular names, not osis names
+x Change selects to Regular names, not osis names
 
 go back and fix loading problems on regular bitbible
