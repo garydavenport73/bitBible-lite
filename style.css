@@ -359,5 +359,16 @@ main input {
 #old-computer-icon {
     position: fixed;
     bottom: 0;
-    right:0;
+    right: 0;
+}
+
+/*
+No save progress overrides
+*/
+.chapter-checkbox{
+    visibility: hidden;
+}
+#download-reading-progress,
+#upload-reading-progress {
+    display: none;
 }
