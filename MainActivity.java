@@ -1,4 +1,4 @@
-package com.example.bitbible;
+package com.example.bitbible_lite;
 
 import static android.content.ContentValues.TAG;
 
@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
                 Log.e(TAG, "Reflection fail", e);
             }
         }
-    webview.loadUrl("file:///android_asset/bitBible-lite.html");
+        webview.loadUrl("file:///android_asset/bitBible-lite.html");
     }
 }
 
