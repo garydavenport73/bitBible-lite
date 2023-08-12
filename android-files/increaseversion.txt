@@ -1,0 +1,21 @@
+This error occurs because, as the error message suggests, you're trying to deploy an app with a versionCode that has already been used to deploy the same app. To fix this:
+
+In your Android project's build.gradle file, remove the lines that set the versionCode and versionName located under the default config:
+
+/////////////I did this increased to 2.0 etc
+android {
+  ...
+  defaultConfig {
+    ...
+    versionCode 1
+    versionName "1.0"
+    ...
+  }
+}
+///////////////////////
+In the AndroidManifest.xml file, add those definitions:
+
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="YOUR_PACKAGE_NAME"
+    android:versionCode="1"
+    android:versionName="1.0">
