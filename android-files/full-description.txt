@@ -1,0 +1,9 @@
+This app is streamlined for reading and studying the Bible.  The app contains a 1) Reading Plan, 2) Bible, 3) Dictionary, 4) Commentary and 5) Map.  
+
+These items are placed in a logical order for studying the Bible.  First, you can open the reading list and pick what day you are on.  It will immediately take you to the appropriate chapter.  If there is a word in the chapter, like a person or place, you can click on if for the dictionary entry.  If it is a place there will be a link to an internal map and also Google Maps.  If you need greater understanding of the chapter, you can click on the commentary.
+
+All of these features are integrated.  The reading plan links to the Bible Chapter.  Words in the Bible chapter link to the dictionary.  The Bible chapter links to the commentary.  Places in the dictionary link to the map.  The Map links to Google Map.  Words in the dictionary are linked to the dictionary itself.  Words in the commentary are linked to the dictionary.
+
+The Bible used is the Berean Study Bible.  The Dictionary is Easton's Bible Dictionary.  The Commentary used is Jamieson, Fausset & Brown Commentary.
+
+The full version (available online as an html download) contains the ability to load and save reading progress and contains an audio reader for the Bible chapters.  Also, different Bible versions can be downloaded as well as the Jamieson, Fausset & Brown Commentary or the Pulpit Commentary.  The full version has the ability to expand all windows (Reading Plan, Bible, Dictionary, Commentary and Map at the same time for an integrated experience).
